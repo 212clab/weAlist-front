@@ -22,7 +22,11 @@ interface Column {
   tasks: Task[];
 }
 
-const MainDashboard: React.FC = () => {
+interface MainDashboardProps {
+  onLogout: () => void;
+}
+
+const MainDashboard: React.FC<MainDashboardProps> = ({ onLogout }) => {
   const { theme } = useTheme();
   const [selectedWorkspace, setSelectedWorkspace] = useState<string>("조직1");
   const [selectedProject, setSelectedProject] = useState<string>("프로젝트1");
@@ -268,6 +272,7 @@ const MainDashboard: React.FC = () => {
                       ? "rounded-t-none"
                       : ""
                   }`}
+                  onClick={onLogout}
                 >
                   로그아웃
                 </button>
